@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+        }
+        
+        ul.topnav {
+            list-style-type: none;
+            margin-top: 0px;
+            padding-left: 10px;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        ul.topnav li {
+            float: left;
+        }
+        
+        ul.topnav li a {
+            display: block;
+            color: black;
+            text-align: center;
+            padding: 6px 19px;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        
+        ul.topnav li.right {
+            float: right;
+        }
+        
+        @media screen and (max-width: 600px) {
+            ul.topnav li.right,
+            ul.topnav li {
+                float: none;
+            }
+        }
+        
+        .fot {
+            font-family: 'Baumans';
+            font-size: 22px;
+            margin-top: 20px;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        /* Create two equal columns that floats next to each other */
+        
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px;
+            /* Should be removed. Only for demonstration */
+        }
+        /* Clear floats after the columns */
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        
+        .container {
+            position: relative;
+            font-family: Arial;
+        }
+        
+        .text-block {
+            position: absolute;
+            bottom: 138px;
+            right: 80px;
+            background-color: white;
+            color: white;
+            padding: 20px;
+            border-radius: 15px 50px 30px;
+            height: 292px;
+            width: 239px;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+        
+        .text-block1 {
+            position: absolute;
+            bottom: 00px;
+            right: 723px;
+            background-color: black;
+            color: white;
+            padding-left: 20px;
+            padding-right: 20px;
+            opacity: .6;
+            height: 500px;
+            width: 234px;
+            border-radius: 0px 50px 50px 0px;
+            padding-top: 96px;
+        }
+        
+        .button {
+            border-radius: 15px 50px 30px;
+        }
+        
+        .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+        
+        a.effect-underline:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            display: inline-block;
+            height: 1em;
+            width: 100%;
+            border-bottom: 1px solid;
+            margin-top: 10px;
+            opacity: 0;
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+        }
+        
+        a.effect-underline:hover:after {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+        
+        a.effect-box:after,
+        a.effect-box:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            display: inline-block;
+            height: 1em;
+            width: 100%;
+            margin-top: 10px;
+            opacity: 0;
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+        }
+        
+        a.effect-box:before {
+            border-left: 1px solid;
+            border-right: 1px solid;
+            -webkit-transform: scale(1, 0);
+            transform: scale(1, 0);
+        }
+        
+        a.effect-box:after {
+            border-bottom: 1px solid;
+            border-top: 1px solid;
+            -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+        }
+        
+        a.effect-box:hover:after,
+        a.effect-box:hover:before {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+        
+        .box1 {
+            height: 360px;
+        }
+        
+        .boxt {
+            height: 200px;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 1px 1px;
+        }
+        
+        .zoom {
+            transition: transform .2s;
+            margin: 0 auto;
+        }
+        
+        .zoom:hover {
+            transform: scale(1.1);
+        }
+        
+        .overflow {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<script>
+    function validateForm() {
+
+        var name = document.getElementById("uname").value;
+        if (name == "" || !isNaN(name)) {
+            document.getElementById("uname1").innerHTML = "*Enter User name";
+
+        } else {
+
+            document.getElementById("uname1").innerHTML = "";
+        }
+        var password = document.getElementById("pass").value;
+        if (password == "" || !isNaN(password)) {
+            document.getElementById("pass1").innerHTML = "*Enter Password";
+
+        } else {
+
+            document.getElementById("pass1").innerHTML = "";
+        }
+
+        if (name !== "" && password !== "") {
+            var database = [{
+                "id": "1",
+                "name": "Hari",
+                "password": "hari1"
+            }, {
+                "id": "1",
+                "name": "Haran",
+                "password": "haran1"
+            }, {
+                "id": "1",
+                "name": "Narayanan",
+                "password": "narayanan1"
+            }];
+            window.localStorage.setItem("logdb", JSON.stringify(database));
+            var db = JSON.parse(window.localStorage.getItem("logdb"));
+            var i;
+            for (i = 0; i < db.length; i++) {
+                if (name == db[i].name && password == db[i].password) {
+                    window.open("frame.html", "_self");
+                    document.getElementById("sub1").innerHTML = "";
+
+                } else {
+                    document.getElementById("sub1").innerHTML = "Enter Valid Data..";
+                }
+            }
+        }
+    }
+</script>
+
+<body>
+
+    <ul class="topnav">
+        <li>
+
+            <img src="Blogo.png" width="70px" height="80px"> </li>
+        <li class=" fot "><a href="#news ">RDH </a></li>
+        <li class=" right fot "><a href="#news "><i class="fa fa-question-circle" aria-hidden="true"></i>FAQ </a></li>
+        <li class="right fot ">
+            <a href="#contact "> <i class="fa fa-volume-control-phone" aria-hidden="true"></i>Contact</a>
+        </li>
+        <li class="right fot "><a href="#about "> About Us </a></li>
+
+
+    </ul>
+    <div class="container">
+        <img src="card.jpeg" width="100%" height="500px">
+        <div class="text-block">
+            <form>
+                <p><i class="fa fa-lock" aria-hidden="true" style="color:black"></i>
+                    <font color="black">LOG IN:</font>
+                </p>
+
+                <form name="myForm" method="post">
+                    <font color="black">Username : </font>
+                    <input type="text" style="color: black;" placeholder="Enter User Name" id="uname" name="uname"><br>
+                    <span id="uname1" style="color: red;"></span>
+                    <br>
+
+                    <font color="black">Password : </font>
+
+                    <input type="password" style="color: black" ; placeholder=" Enter Password" id="pass" name="pass"><br>
+                    <span id="pass1" style="color: red;"></span>
+                    <br>
+
+                    <input type="button" class="button " onclick="validateForm()" value="Submit" style="color: black">
+                    <span id="sub1" style="color: red;"></span>
+
+                    <br>
+                    <br>
+                    <p>
+                        <a href="# ">
+                            <font color="black ">Forget Password</font>
+                        </a>
+                    </p>
+                </form>
+        </div>
+        <div class="text-block1 ">
+            <h4><b>Gran up your pup to<b></h4>
+                     <h2>SNUGGLE..</h2>
+                     <h3>IN YOUR HOME</h3>
+                     <h5>Your furbaby already loves you. But they’ll be ecstatic with a backyard at a home you both can call your own.</h5>
+                   <button class="button "><font color="black ">Learn More ></font></button>
+                    </div>
+          </div>
+          <br>
+          
+<div class="wrapper "> <h5 align="center "><center><a href="# " class="effect-underline ">BANKING MADE PERSONAL</a></center></h5> 
+    <h3 align="center "><center><a href="# " class="effect-underline ">Personal Banking from MutualBank</a></center></h3> </div>
+
+          <div class="container ">
+                <div class="row ">
+                  <div class="col-sm-4 ">
+                    <h3><i class="fa fa-mobile " aria-hidden="true " style="color:#24B2E0; font-size: 40px; " ></i> Online & Mobile Banking </h3>
+                    <p>Track your spending, deposit checks, pay bills, and transfer money. Anytime. Anywhere.</p>
+                   <a href="# ">ONLINE BANKING > </a> <a href="# ">OUR APP > </a>
+                  </div>
+                  <div class="col-sm-4 ">
+                        <h3><i class="fa fa-user " aria-hidden="true " style="color:#24B2E0; font-size: 40px; " ></i> Online & Mobile Banking </h3>
+                        <p>Our Free Checking and customized accounts are designed to help you bank (and get rewards) the way you want.</p>
+                        <a href="# ">LEARN MORE > </a> 
+                    
+                  </div>
+                  <div class="col-sm-4 ">
+                        <h3><i class="fa fa-credit-card " aria-hidden="true " style="color:#24B2E0; font-size: 40px; " ></i> 55,00 ATM </h3>      
+                    <p>Banking local doesn’t mean staying local. Use our debit cards at 55,000 ATMs around the world, surcharge-free.</p>
+                    <a href="# ">LEARN MORE > </a> 
+                  </div>
+                </div>
+              </div>
+<br><br><br>
+              <div class="container ">
+                    <div class="row ">
+                      <div class="col-sm-4 ">
+                        <h3><i class="fa fa-globe " aria-hidden="true " style="color:#24B2E0; font-size: 40px; " ></i> Investments & Retirement </h3>
+                        <p>Prepare for a well-earned retirement. Our investment advisors can show you how.</p>
+                       <a href="# ">ONLINE BANKING > </a> <a href="# ">OUR APP > </a>
+                      </div>
+                      <div class="col-sm-4 ">
+                            <h3><i class="fa fa-home " aria-hidden="true " style="color:#24B2E0; font-size: 40px; " ></i> Home & Personal Loans </h3>
+                            <p>For more than a century, we have provided quick, friendly, and hassle-free loan experiences.</p>
+                            <a href="# ">HOME > </a> <a href="# ">PERSONAL > </a>
+                        
+                      </div>
+                      <div class="col-sm-4 ">
+                            <h3><i class="fa fa-lock "" aria-hidden="true" style="color:#24B2E0; font-size: 40px;"></i> Trust & Wealth Management</h3>
+                <p>We make sure your money is working as hard - and as smart - as it can for you.</p>
+                <a href="#">LEARN MORE > </a>
+        </div>
+    </div>
+    </div>
+    <br><br>
+
+
+
+
+
+    <div class="wrapper">
+        <h4 align="center">
+            <center>
+                <font color="#09779A"><a href="#" class="effect-underline">TRIED & TRUSTED</a>L</font>
+            </center>
+        </h4>
+        <h3 align="center">
+            <center><a href="#" class="effect-underline">What Our Customers Say</a></center>
+        </h3>
+    </div>
+    <br>
+    <br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 form-group ">
+                <div class="box1 overflow"><img src="hand.jpeg" width="213px" height="160px" alt="place" class="zoom place">
+                    <div class="boxt">
+                        <p>Place (United States Census Bureau), defined as any concentration of populationCensus-designated place, a populated area lacking its own municipal.</b>
+                </p>
+        </div>
+    </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 form-group">
+        <div class="box1 overflow"><img src="fam.jpeg" width="213px" height="160px" alt="idea" class="zoom place">
+            <div class="boxt">
+                <p>Vodafone Idea Limited is India's largest telecom operator with its headquarter based in Mumbai, Maharashtra. Vodafone Idea is a pan-India integrated GSM.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 form-group">
+        <div class="box1 overflow"><img src="lock.jpeg" width="213px" height="160px" alt="light" class="zoom place">
+            <div class="boxt">
+                <p>Light is electromagnetic radiation within a certain portion of the electromagnetic spectrum. The word usually refers to visible light. </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 form-group">
+        <div class="box1 overflow"><img src="num.jpeg" width="213px" height="160px;" alt="todo" class="zoom place">
+            <div class="boxt">
+                <p>This Must Be the Place is a 2011 European drama film directed by Paolo Sorrentino, written by Sorrentino and Umberto Contarelloand released.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br><br>
+    <div class="wrapper">
+        <h5 align="center">
+            <center><a href="#" class="effect-underline">HOW CAN I HELP YOU</a></center>
+        </h5>
+        <h3 align="center">
+            <center><a href="#" class="effect-underline">Customer Support</a></center>
+        </h3>
+    </div>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <P><i class="fa fa-mobile" aria-hidden="true" style="color:#24B2E0; font-size: 40px;"></i> CALL SUPPORT</P>
+                <a href="#">
+                    <P>800-383-8031</P>
+                </a>
+                <p>Monday - Friday: 8am to 6pm</p>
+                <p>Saturday: 9am to Noon</p>
+                <p> Sunday: Unavailable</p>
+                <i class="fa fa-facebook zoom" aria-hidden="true" style="font-size: 40px;padding-right: 8px"></i>
+                <i class="fa fa-envelope zoom" aria-hidden="true" style=" font-size: 40px;padding-right: 8px"></i>
+                <i class="fa fa-linkedin-square zoom" aria-hidden="true" style=" font-size: 40px;padding-right: 8px"></i>
+                <i class="fa fa-twitter-square zoom" aria-hidden="true" style="font-size: 40px;padding-right: 8px"></i>
+            </div>
+            <div class="col-sm-4">
+                <h4>ABOUT MUTUAL BANK</h4>
+                <a href="#">Our Story |</a>
+                <a href="#">Location |</a>
+                <a href="#">Press |</a>
+                <a href="#">Careers |</a>
+                <a href="#">Investor |</a>
+                <a href="#">Relation |</a>
+                <h4>RESOURCE</h4>
+                <a href="#">Privacy Policy |</a>
+                <a href="#">Business Banking Service |</a>
+                <a href="#">Personal Online Banking |</a>
+                <a href="#">Service |</a>
+                <a href="#">Status |</a>
+
+            </div>
+            <div class="col-sm-4">
+                <h4>LEGAL</h4>
+                <a href="#">Rates |</a>
+                <a href="#">Finacial Tips & Tools |</a>
+                <a href="#">Properties |</a>
+                <h4>RELATED PAGE</h4>
+                <a href="#">About MutualBank |</a>
+                <a href="#">Business Banking Service |</a>
+                <a href="#">Personal Online Banking |</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
